@@ -47,7 +47,7 @@ namespace HangMan
 
         public void showPuzzle()
         {
-            Console.WriteLine(puzzle.wordToDisplay);
+            Console.WriteLine(puzzle);
         }
 
         public void timeToGuess()

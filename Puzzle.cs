@@ -8,16 +8,30 @@ namespace HangMan
 {
     class Puzzle
     {
-        string wordToGuess;
-        List<char> wrongGuesses;
-        public char[] wordToDisplay;
+        private string wordToGuess;
+        private List<char> wrongGuesses;
+        private char[] wordToDisplay;
 
         public Puzzle()
         {
             wordToGuess = new PuzzleLibrary().getWordForPuzzle();
             wrongGuesses = new List<char>();
             wordToDisplay = Enumerable.Repeat('-', wordToGuess.Length).ToArray();
+        }
 
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+
+            if (wrongGuesses.Count > 0)
+            {
+                result.Append("Wrong Guesses: " + new string(wrongGuesses.ToArray()));
+                result.Append(Environment.NewLine);
+            }
+
+            result.Append(new string(wordToDisplay));
+
+            return result.ToString();
         }
 
         public void checkGuessedLetter(char letter)
